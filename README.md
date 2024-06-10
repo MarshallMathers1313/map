@@ -36,4 +36,4 @@ int main() {
 
 ## UML Class Diagram
 
-![UML Class Diagram](./doc/class_diagram.drawio.png)
+![UML Class Diagram](./doc/class_diagram.png)
