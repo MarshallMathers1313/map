@@ -33,3 +33,7 @@ int main() {
     return 0; 
 }
 ```
+
+## UML Class Diagram
+
+![UML Class Diagram](./doc/class_diagram.png)
