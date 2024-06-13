@@ -1,6 +1,10 @@
 #include "catch_amalgamated.hpp"
 #include "../include/map.hpp"
 
+////////////////////////////////////////////////////////////////////////////
+/////////////////////////////// Map tests //////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
 TEST_CASE("Test Map::operator[] and Map::insert") {
     SECTION("It can insert a new element") {
         Map<std::string, int> m = {{"A", 65}, {"B", 66}, {"C", 67}};
@@ -72,6 +76,72 @@ TEST_CASE("Test Map::count, Map::find") {
         Map<std::string, int> m = {{"A", 65}, {"B", 66}, {"C", 67}};
 
         Map<std::string, int>::iterator it = m.find("B");
-        // REQUIRE(*it == "B");
+        // REQUIRE((*it).second == "B");
+    }
+}
+
+
+////////////////////////////////////////////////////////////////////////////
+/////////////////////////////// BST tests //////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+TEST_CASE("Test BinarySearchTree::insert") {
+    SECTION("It can insert a new element") {
+        BinarySearchTree<int> bst;
+
+        const size_t expected_size = 4;
+        int expected_values[expected_size] = {5, 10, 20, 30};
+        for (size_t i = 0; i < expected_size; i++) {
+            bst.insert(expected_values[i]);
+        }
+
+        REQUIRE(bst.size() == expected_size);
+        BinarySearchTree<int>::iterator it = bst.cbegin();
+        for (size_t i = 0; i < expected_size; i++) {
+            REQUIRE(*it == expected_values[i]);
+        }
+    }
+}
+
+TEST_CASE("Test BinarySearchTree::erase()") {
+    SECTION("It can erase any element from the tree") {
+        BinarySearchTree<int> bst;
+
+        const size_t size = 4;
+        int values[size] = {5, 10, 20, 30};
+        for (size_t i = 0; i < size; i++) {
+            bst.insert(values[i]);
+        }
+
+        bst.erase(bst.cbegin());
+        bst.erase(--bst.cend());
+
+        size_t expected_size = 2;
+        int expected_values[size] = {10, 20};
+
+        REQUIRE(bst.size() == expected_size);
+        BinarySearchTree<int>::iterator it = bst.cbegin();
+        for (size_t i = 0; i < expected_size; i++) {
+            REQUIRE(*it == expected_values[i]);
+        }
+    }
+}
+
+TEST_CASE("Test BinarySearchTree::clear()") {
+    SECTION("It can clear whole binary search tree") {
+        BinarySearchTree<int> bst;
+
+        const size_t size = 4;
+        int values[size] = {5, 10, 20, 30};
+        for (size_t i = 0; i < size; i++) {
+            bst.insert(values[i]);
+        }
+        
+        REQUIRE(bst.size() == size);
+
+        bst.clear();
+    
+        REQUIRE(bst.empty() == true);
+        REQUIRE(bst.size() == NULL);
     }
 }
