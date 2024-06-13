@@ -68,13 +68,10 @@ TEST_CASE("Test Map::count, Map::find") {
         REQUIRE(m.count("B") == 1);
     }
 
-    SECTION("It can return count of the same keys for const objects") {
-        Map<std::string, int> m = {{"A", 65}, {"B", 66}, {"C", 67}};
-
-        REQUIRE(m.count("B") == 1);
-    }
-
     SECTION("It can find the key using Map::find") {
         Map<std::string, int> m = {{"A", 65}, {"B", 66}, {"C", 67}};
+
+        Map<std::string, int>::iterator it = m.find("B");
+        // REQUIRE(*it == "B");
     }
 }

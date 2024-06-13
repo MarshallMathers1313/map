@@ -6,10 +6,9 @@ class BinarySearchTree;
 
 template <class K, class V>
 class Map {
-private:
-    typedef BinarySearchTree<std::pair<K,V>>* iterator;
-
 public:
+    typedef BinarySearchTree<std::pair<K,V>>* iterator;
+    
     Map();
     Map(const std::initializer_list<std::pair<K, V>> &pairs);
     ~Map();
