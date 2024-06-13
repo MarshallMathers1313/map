@@ -1,13 +1,12 @@
 #ifndef __MAP_HPP__
 #define __MAP_HPP__
 
-template <class T>
-class BinarySearchTree;
+#include "bst.hpp"
 
 template <class K, class V>
 class Map {
 public:
-    typedef BinarySearchTree<std::pair<K,V>>* iterator;
+    typedef BinarySearchTree<std::pair<K,V>>::iterator iterator;
     
     Map();
     Map(const std::initializer_list<std::pair<K, V>> &pairs);
