@@ -10,8 +10,6 @@ public:
 
 template <typename T>
 class BinarySearchTree {
-private:
-    
 public:
     typedef BNode* iterator;
 

@@ -33,11 +33,12 @@ public:
     iterator find(const K &key);
 
     const iterator cbegin() const;
-    const iterator cend() const;
     iterator begin();
+    
+    const iterator cend() const;
     iterator end();
 
-    friend void swap(Map<K, V> first, Map<K, V> second);
+    friend void swap(Map<K, V> &first, Map<K, V> &second);
 };
 
 #endif //__MAP_HPP__
